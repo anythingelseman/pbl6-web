@@ -28,7 +28,9 @@ export default function NavBar() {
             </span>
           </Dropdown.Header>
           <Dropdown.Item className="text-white">Details</Dropdown.Item>
-          <Dropdown.Item className="text-white">Manage</Dropdown.Item>
+          <Dropdown.Item className="text-white" href="/manage/films">
+            Manage
+          </Dropdown.Item>
 
           <Dropdown.Divider />
           <Dropdown.Item className="text-white">Sign out</Dropdown.Item>
