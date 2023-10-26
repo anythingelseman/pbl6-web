@@ -8,7 +8,7 @@ import {
   Textarea,
   TextInput,
 } from "flowbite-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import {
   HiOutlineExclamationCircle,
@@ -19,7 +19,53 @@ import {
 
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
-export default function DashBoardPage() {
+const apiUrl = process.env.API_URL;
+interface FilmData {
+  id: number;
+  name: string;
+  actor: string;
+  direct: string;
+  duration: number;
+  description: string;
+  year: number;
+  country: string;
+  limitAge: number;
+  trailer: string;
+  startDate: string; // This should be a valid date string format
+  endDate: string; // This should be a valid date string format
+  category: string;
+  image: string;
+  createdOn: string; // This should be a valid date string format
+  lastModifiedOn: string; // This should be a valid date string format
+}
+
+interface ApiResponse {
+  messages: string[];
+  succeeded: boolean;
+  data: FilmData[];
+  currentPage: number;
+  totalPages: number;
+  totalCount: number;
+  pageSize: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+}
+
+export default function FilmsPage() {
+  const [filmData, setFilmData] = useState<ApiResponse>();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentSearched, setCurrentSearched] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`${apiUrl}/film?OrderBy=id`);
+      const data = await response.json();
+      setFilmData(data);
+      console.log(data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="block items-center justify-between border-b border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800 sm:flex">
