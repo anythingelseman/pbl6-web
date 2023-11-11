@@ -148,6 +148,7 @@ const AddProductModal = function () {
       });
       const result = await response.json();
       console.log("Data posted successfully:", result);
+      location.reload();
     } catch (error) {
       console.error("Error posting data:", error);
     }

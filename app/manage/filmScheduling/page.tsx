@@ -1,5 +1,9 @@
 "use client";
 
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import resourceTimelinePlugin from "@fullcalendar/resource-timeline";
+import interactionPlugin from "@fullcalendar/interaction";
 import {
   Button,
   Label,
@@ -178,48 +182,78 @@ const DeleteProductModal = function () {
 
 const ProductsTable = function () {
   return (
-    <Table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-      <Table.Head className="bg-gray-100 dark:bg-gray-700">
-        <Table.HeadCell>Film</Table.HeadCell>
-        <Table.HeadCell>Cinema</Table.HeadCell>
-        <Table.HeadCell>Room</Table.HeadCell>
-        <Table.HeadCell>Start time</Table.HeadCell>
-        <Table.HeadCell>Duration</Table.HeadCell>
-        <Table.HeadCell>Price</Table.HeadCell>
-        <Table.HeadCell>Action</Table.HeadCell>
-      </Table.Head>
-      <Table.Body className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-800">
-        <Table.Row className="hover:bg-gray-100 dark:hover:bg-gray-700">
-          <Table.Cell className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
-            <div className="text-base font-semibold text-gray-900 dark:text-white">
-              Oppenheimer
-            </div>
-            <div className="text-sm font-normal text-gray-500 dark:text-gray-400"></div>
-          </Table.Cell>
-          <Table.Cell className="whitespace-nowrap p-4 text-base font-medium text-gray-900 dark:text-white">
-            CGV Da Nang
-          </Table.Cell>
-          <Table.Cell className="whitespace-nowrap p-4 text-base font-medium text-gray-900 dark:text-white">
-            Room 1
-          </Table.Cell>
-          <Table.Cell className="whitespace-nowrap p-4 text-base font-medium text-gray-900 dark:text-white">
-            5:00PM 20/10/2023
-          </Table.Cell>
-          <Table.Cell className="whitespace-nowrap p-4 text-base font-medium text-gray-900 dark:text-white">
-            3h
-          </Table.Cell>
-          <Table.Cell className=" whitespace-nowrap p-4 text-base font-medium text-gray-900 dark:text-white">
-            50,000 VND
-          </Table.Cell>
-          <Table.Cell className="space-x-2 whitespace-nowrap p-4">
-            <div className="flex items-center gap-x-3">
-              <DeleteProductModal />
-            </div>
-          </Table.Cell>
-        </Table.Row>
-      </Table.Body>
-    </Table>
+    <FullCalendar
+      schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
+      plugins={[resourceTimelinePlugin, interactionPlugin]}
+      headerToolbar={{
+        left: "prev,next today",
+        center: "title",
+        right: "resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth",
+      }}
+      initialView="resourceTimelineDay"
+      nowIndicator={true}
+      editable={true}
+      selectable={true}
+      selectMirror={true}
+      resources={[
+        { id: "a", title: "Auditorium A" },
+        { id: "b", title: "Auditorium B", eventColor: "green" },
+        { id: "c", title: "Auditorium C", eventColor: "orange" },
+      ]}
+      events={[
+        {
+          title: "nice event",
+          start: new Date(),
+
+          resourceId: "a",
+        },
+        { title: "nice event", start: new Date(), resourceId: "b" },
+      ]}
+    />
   );
+  // return (
+  //   <Table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+  //     <Table.Head className="bg-gray-100 dark:bg-gray-700">
+  //       <Table.HeadCell>Film</Table.HeadCell>
+  //       <Table.HeadCell>Cinema</Table.HeadCell>
+  //       <Table.HeadCell>Room</Table.HeadCell>
+  //       <Table.HeadCell>Start time</Table.HeadCell>
+  //       <Table.HeadCell>Duration</Table.HeadCell>
+  //       <Table.HeadCell>Price</Table.HeadCell>
+  //       <Table.HeadCell>Action</Table.HeadCell>
+  //     </Table.Head>
+  //     <Table.Body className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-800">
+  //       <Table.Row className="hover:bg-gray-100 dark:hover:bg-gray-700">
+  //         <Table.Cell className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+  //           <div className="text-base font-semibold text-gray-900 dark:text-white">
+  //             Oppenheimer
+  //           </div>
+  //           <div className="text-sm font-normal text-gray-500 dark:text-gray-400"></div>
+  //         </Table.Cell>
+  //         <Table.Cell className="whitespace-nowrap p-4 text-base font-medium text-gray-900 dark:text-white">
+  //           CGV Da Nang
+  //         </Table.Cell>
+  //         <Table.Cell className="whitespace-nowrap p-4 text-base font-medium text-gray-900 dark:text-white">
+  //           Room 1
+  //         </Table.Cell>
+  //         <Table.Cell className="whitespace-nowrap p-4 text-base font-medium text-gray-900 dark:text-white">
+  //           5:00PM 20/10/2023
+  //         </Table.Cell>
+  //         <Table.Cell className="whitespace-nowrap p-4 text-base font-medium text-gray-900 dark:text-white">
+  //           3h
+  //         </Table.Cell>
+  //         <Table.Cell className=" whitespace-nowrap p-4 text-base font-medium text-gray-900 dark:text-white">
+  //           50,000 VND
+  //         </Table.Cell>
+  //         <Table.Cell className="space-x-2 whitespace-nowrap p-4">
+  //           <div className="flex items-center gap-x-3">
+  //             <DeleteProductModal />
+  //           </div>
+  //         </Table.Cell>
+  //       </Table.Row>
+  //     </Table.Body>
+  //   </Table>
+  // );
 };
 
 export const Pagination = function () {

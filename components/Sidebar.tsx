@@ -1,6 +1,6 @@
 import { Sidebar, TextInput } from "flowbite-react";
 import { HiSearch, HiUsers, HiFilm } from "react-icons/hi";
-import { BsFillHouseDoorFill } from "react-icons/bs";
+import { BsFillHouseDoorFill, BsDoorClosedFill } from "react-icons/bs";
 import { BiTime, BiSolidCategoryAlt } from "react-icons/bi";
 export default function SideBar() {
   return (
@@ -17,6 +17,10 @@ export default function SideBar() {
               </Sidebar.Item>
               <Sidebar.Item href="/manage/cinema" icon={BsFillHouseDoorFill}>
                 Cinema
+              </Sidebar.Item>
+
+              <Sidebar.Item href="/manage/room" icon={BsDoorClosedFill}>
+                Room
               </Sidebar.Item>
               <Sidebar.Item href="/manage/filmScheduling" icon={BiTime}>
                 Film Scheduling
