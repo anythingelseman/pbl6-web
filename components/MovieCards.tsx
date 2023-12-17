@@ -27,12 +27,12 @@ export default function MovieCards() {
   const filterFilms = useMemo(() => {
     if (tab === 0) {
       return films?.filter((film) =>
-        isAfter(new Date(), new Date(film.startDate)),
+        isAfter(new Date(), new Date(film.startDate))
       );
     }
     if (tab === 1) {
       return films?.filter((film) =>
-        isBefore(new Date(), new Date(film.startDate)),
+        isBefore(new Date(), new Date(film.startDate))
       );
     }
   }, [films, tab]);

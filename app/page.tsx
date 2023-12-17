@@ -14,7 +14,7 @@ export default function Home() {
 
       <MovieCarousel />
 
-      <div className="max-w-6xl m-auto mt-4 lg:px-0 px-8">
+      <div className="max-w-6xl m-auto mt-10 lg:px-0 px-8">
         <NavigateToWhatsOn />
 
         <div className="h-[2px] bg-primary-linear mt-8 rounded-full"></div>

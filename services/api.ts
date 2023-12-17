@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig } from "axios";
 
 const apiClient: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: 'http://cinephilewebapi.southeastasia.cloudapp.azure.com/api',
   timeout: 60 * 60 * 1000,
 });
 
